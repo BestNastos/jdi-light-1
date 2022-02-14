@@ -27,7 +27,7 @@ env:
 
 on:
   push:
-    branches: [ fix_branch_for_some_tests ] # ENTER branch name there
+    branches: [ version_1_3_24 ] # ENTER branch name there
 # !!!! PLEASE do not change this file in master, as it's only template for branch debug in GitHub Actions
 
 jobs:
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        java: [8] # by default we use only 8. can be changed to any, the full list is [8, 9, 10, 11, 12, 13]
+        java: [8, 9, 10, 11, 12, 13] # by default we use only 8. can be changed to any, the full list is [8, 9, 10, 11, 12, 13]
 
     steps:
     - uses: actions/checkout@v2
