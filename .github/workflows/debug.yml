@@ -95,6 +95,7 @@ jobs:
     - name: Tests BDD
       if: ${{ steps.jdi-compile.outcome == 'success' }}
       timeout-minutes: 90 # prevent blocking
+      continue-on-error: true
       run: |
           mvn verify $WITH_PARAMS -DCucumber.options="--tags ~@ignore_for_firefox" -Dchrome.capabilities.path=${CHROME_PROPERTIES} -Dff.capabilities.path=${FIREFOX_PROPERTIES} -pl $GROUP_ID:$BDD_TESTS --fail-at-end
 
@@ -109,6 +110,7 @@ jobs:
     - name: Tests bootstrap Unit
       if: ${{ steps.jdi-compile.outcome == 'success' }}
       timeout-minutes: 90 # prevent blocking
+      continue-on-error: true
       run: mvn verify $WITH_PARAMS -Dchrome.capabilities.path=${CHROME_PROPERTIES} -Dff.capabilities.path=${FIREFOX_PROPERTIES} -pl $GROUP_ID:$BOOTSTRAP_TESTS --fail-at-end
 
 #    - name: Run tests - Angular Unit tests
@@ -129,16 +131,19 @@ jobs:
     - name: Run tests - HTML
       if: ${{ steps.jdi-compile.outcome == 'success' }}
       timeout-minutes: 90 # prevent blocking
+      continue-on-error: true
       run: mvn verify $WITH_PARAMS -Dchrome.capabilities.path=${CHROME_PROPERTIES} -Dff.capabilities.path=${FIREFOX_PROPERTIES} -pl $GROUP_ID:$HTML_TESTS --fail-at-end
 
     - name: Run tests - Test Examples
       if: ${{ steps.jdi-compile.outcome == 'success' }}
       timeout-minutes: 90 # prevent blocking
+      continue-on-error: true
       run: mvn verify $WITH_PARAMS -Dchrome.capabilities.path=${CHROME_PROPERTIES} -Dff.capabilities.path=${FIREFOX_PROPERTIES} -pl $GROUP_ID:$EXAMPLES --fail-at-end
 
     - name: Run tests - Performance
       if: ${{ steps.jdi-compile.outcome == 'success' }}
       timeout-minutes: 90 # prevent blocking
+      continue-on-error: true
       run: mvn verify $WITH_PARAMS -Dchrome.capabilities.path=${CHROME_PROPERTIES} -Dff.capabilities.path=${FIREFOX_PROPERTIES} -pl $GROUP_ID:$PERFORMANCE --fail-at-end
 
     - name: Collect reports
