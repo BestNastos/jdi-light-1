@@ -3,6 +3,7 @@ package com.epam.jdi.light.material.elements.displaydata;
 import com.epam.jdi.light.common.JDIAction;
 import com.epam.jdi.light.elements.base.UIBaseElement;
 import com.epam.jdi.light.elements.common.UIElement;
+import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.material.asserts.displaydata.MUIListAssert;
 
 import java.util.List;
@@ -35,6 +36,11 @@ public class MUIList extends UIBaseElement<MUIListAssert> {
      */
     protected static final String SUBHEADER_LOCATOR = ".MuiListSubheader-root";
 
+    List<MUIListItem> checkboxItemsVar;
+
+    @UI(LIST_ITEM_LOCATOR)
+    public List<MUIListItem> checkboxItems;
+
     private MUIList() {
     }
 
@@ -45,6 +51,21 @@ public class MUIList extends UIBaseElement<MUIListAssert> {
      */
     public MUIList(UIElement element) {
         core().setCore(element);
+    }
+
+    @JDIAction("Get list of '{name}' items")
+    public List<MUIListItem> itemsVariable() {
+        if (checkboxItemsVar.isEmpty()) {
+            Function<String, List<MUIListItem>> function = locator -> finds(locator).stream()
+                .map(listItem -> new MUIListItem().setCore(MUIListItem.class, listItem))
+                .collect(Collectors.toList());
+            if (!finds(LIST_ITEM_CONTAINER_LOCATOR).isEmpty()) {
+                checkboxItemsVar = function.apply(LIST_ITEM_CONTAINER_LOCATOR);
+            } else {
+                checkboxItemsVar = function.apply(LIST_ITEM_LOCATOR);
+            }
+        }
+        return checkboxItemsVar;
     }
 
     /**
