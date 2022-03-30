@@ -37,9 +37,9 @@ public class ListPerformanceTests extends TestsInit {
         for (int i = 0; i < 20; i++) {
             list.get(0).has().text("Line item 1");
             list.get(1).has().text("Line item 2");
-            checkboxList.items().get(1).find(".MuiCheckbox-root").click();
-            checkboxList.items().get(1).find(".MuiCheckbox-root").has().cssClass("Mui-checked");
-            checkboxList.items().get(1).find(".MuiCheckbox-root").click();
+            list.get(1).find(".MuiCheckbox-root").click();
+            list.get(1).find(".MuiCheckbox-root").has().cssClass("Mui-checked");
+            list.get(1).find(".MuiCheckbox-root").click();
             list.get(2).has().text("Line item 3");
             list.get(3).has().text("Line item 4");
         }
