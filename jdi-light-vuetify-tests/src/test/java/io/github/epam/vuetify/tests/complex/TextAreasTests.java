@@ -25,10 +25,10 @@ import static org.testng.Assert.assertTrue;
 
 public class TextAreasTests extends TestsInit {
 
-    private static final String LOREM_IPSUM_TEXT = "Lorem ipsum dolor sit amet, consectetur " +
-            "adipiscing elit, sed do eiusmod tempor incididunt ut labore et " +
-            "dolore magna aliqua. Ut enim ad minim veniam, quis nostrud " +
-            "exercitation ullamco laboris nisi ut aliquipex ea commodo consequat.";
+    private static final String LOREM_IPSUM_TEXT = "Lorem ipsum dolor sit amet, consectetur "
+        + "adipiscing elit, sed do eiusmod tempor incididunt ut labore et "
+        + "dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "
+        + "exercitation ullamco laboris nisi ut aliquipex ea commodo consequat.";
 
     @BeforeClass
     public void before() {
@@ -42,8 +42,8 @@ public class TextAreasTests extends TestsInit {
         autoGrowTextArea.is().autoGrow();
         autoGrowTextArea.is().notResizable();
         autoGrowTextArea.is().filled();
-        autoGrowTextArea.has().lines("The Woodman set to work at once, and so " +
-            "sharp was his axe that the tree was soon chopped nearly through.");
+        autoGrowTextArea.has().lines("The Woodman set to work at once, and so "
+            + "sharp was his axe that the tree was soon chopped nearly through.");
         autoGrowTextArea.label().is().displayed();
         autoGrowTextArea.label().has().text("Label");
         autoGrowTextArea.has().height(is(120));
@@ -54,7 +54,7 @@ public class TextAreasTests extends TestsInit {
         autoGrowTextArea.has().rowsCount(5);
     }
 
-//    @Test(dataProvider = "textAreasWithColor", dataProviderClass = TextAreasDataProviders.class)
+    //    @Test(dataProvider = "textAreasWithColor", dataProviderClass = TextAreasDataProviders.class)
 //    public void colorTextAreaTest(TextArea textArea, String backGround) {
 //        textArea.label().has().text("Label");
 //        textArea.has().text(emptyString());
