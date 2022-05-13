@@ -47,7 +47,7 @@ public class BadgeTests extends TestsInit {
 
     @Test
     public void dynamicBadgeTest() {
-        dynamicBadge.is().notDisplayed();
+        dynamicBadge.is().hidden();
         for(int i = 1; i < 4; i++) {
             sendMessageButton.click();
             waitCondition(() -> dynamicBadge.isDisplayed());
@@ -56,12 +56,12 @@ public class BadgeTests extends TestsInit {
             dynamicBadge.has().numberOfNewMessages(i);
         }
         clearNotificationsButton.click();
-        dynamicBadge.is().notDisplayed();
+        dynamicBadge.is().hidden();
     }
 
     @Test
     public void hoverBadgeTest() {
-        hoverBadge.is().notDisplayed();
+        hoverBadge.is().hidden();
         hoverIcon.hover();
         hoverBadge.is().displayed();
         hoverBadge.has().newMessages();
